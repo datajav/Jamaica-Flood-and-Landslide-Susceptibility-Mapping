@@ -1,4 +1,4 @@
-# 🎭 Facial Emotion Detector
+# Facial Emotion Detector
 
 > Real-time facial expression recognition using a fine-tuned MobileNetV2 CNN — built with Python, TensorFlow, and OpenCV.
 
