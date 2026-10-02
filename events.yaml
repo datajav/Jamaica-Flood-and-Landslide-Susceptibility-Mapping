@@ -1,0 +1,22 @@
+# One entry per event. Add an event = add an entry. Verify every date and
+# check imagery availability (cloud cover, S1 passes) before using it.
+grid_resolution: 8
+events:
+  - id: melissa_2025
+    name: Hurricane Melissa
+    event_window: ["2025-10-27", "2025-11-02"]   # verify
+    pre_window:   ["2025-09-01", "2025-10-20"]
+    post_window:  ["2025-11-01", "2025-12-15"]
+    labels: [flood, landslide]
+    verified: false
+  - id: beryl_2024
+    name: Hurricane Beryl
+    event_window: ["2024-07-02", "2024-07-06"]   # verify
+    pre_window:   ["2024-05-15", "2024-06-30"]
+    post_window:  ["2024-07-05", "2024-08-15"]
+    labels: [flood, landslide]
+    verified: false
+  # TODO: add 2-4 more Sentinel-era events (e.g. Eta 2020, Grace 2021,
+  # May 2017 rains) once dates and imagery coverage are confirmed.
+rainfall:
+  antecedent_days: [7, 30, 90]
