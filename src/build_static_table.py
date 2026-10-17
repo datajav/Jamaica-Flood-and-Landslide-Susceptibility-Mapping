@@ -9,13 +9,19 @@ RES = 8
 grid = gpd.read_parquet(PROCESSED / f"grid_res{RES}.parquet")[["cell", "parish", "lat", "lon"]]
 terrain = pd.read_parquet(PROCESSED / f"terrain_res{RES}.parquet")
 hydro = pd.read_parquet(PROCESSED / f"hydro_res{RES}.parquet")
+landcover = pd.read_parquet(PROCESSED / f"landcover_res{RES}.parquet")
 
-df = grid.merge(terrain, on="cell", validate="1:1").merge(hydro, on="cell", validate="1:1")
+df = (
+    grid.merge(terrain, on="cell", validate="1:1")
+    .merge(hydro, on="cell", validate="1:1")
+    .merge(landcover, on="cell", validate="1:1")
+)
 
 df["elev_mean"] = df["elev_mean"].clip(lower=0)
 df["log_upa_max"] = np.log10(df["upa_max"])
 df["is_mostly_water"] = df["water_frac"] > 0.5
 df["is_near_sea_level"] = df["elev_max"] < 3
+df["lc_permanent_water"] = df["lc_water"] + df["lc_wetland"] + df["lc_mangrove"]
 
 out = PROCESSED / f"static_features_res{RES}.parquet"
 df.to_parquet(out)
