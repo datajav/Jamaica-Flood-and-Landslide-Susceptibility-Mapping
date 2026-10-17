@@ -10,11 +10,13 @@ grid = gpd.read_parquet(PROCESSED / f"grid_res{RES}.parquet")[["cell", "parish",
 terrain = pd.read_parquet(PROCESSED / f"terrain_res{RES}.parquet")
 hydro = pd.read_parquet(PROCESSED / f"hydro_res{RES}.parquet")
 landcover = pd.read_parquet(PROCESSED / f"landcover_res{RES}.parquet")
+roads = pd.read_parquet(PROCESSED / f"roads_res{RES}.parquet")
 
 df = (
     grid.merge(terrain, on="cell", validate="1:1")
     .merge(hydro, on="cell", validate="1:1")
     .merge(landcover, on="cell", validate="1:1")
+    .merge(roads, on="cell", validate="1:1")
 )
 
 df["elev_mean"] = df["elev_mean"].clip(lower=0)
