@@ -14,7 +14,7 @@ reducer = ee.Reducer.mean().combine(ee.Reducer.max(), sharedInputs=True)
 def daily(img):
     s = img.reduceRegion(reducer, jamaica, 5566)
     return ee.Feature(None, {
-        "date": img.date().format("YYYY-MM-DD"),
+        "date": img.date().format("YYYY-MM-dd"),
         "mean": s.get("precipitation_mean"),
         "max": s.get("precipitation_max"),
     })
