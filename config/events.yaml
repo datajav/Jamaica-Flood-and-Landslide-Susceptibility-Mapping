@@ -1,0 +1,24 @@
+  - id: melissa_2025
+    name: Hurricane Melissa
+    event_window: ["2025-10-26", "2025-11-01"]   # landfall 28 Oct 2025
+    pre_window:   ["2025-09-01", "2025-10-20"]
+    post_window:  ["2025-10-29", "2025-12-15"]
+    flood_post_window: ["2025-10-29", "2025-11-01"]
+    s1_pass: ASCENDING
+    s1_orbit: 150
+    labels: [flood, landslide]
+    dates_verified: true
+    s1_checked: true
+    s2_checked: false
+  - id: beryl_2024
+    name: Hurricane Beryl
+    event_window: ["2024-07-02", "2024-07-05"]   # hit Jamaica 3 Jul 2024
+    pre_window:   ["2024-05-15", "2024-06-30"]
+    post_window:  ["2024-07-05", "2024-08-15"]
+    flood_post_window: ["2024-07-05", "2024-07-08"]
+    s1_pass: ASCENDING
+    s1_orbit: 150
+    labels: [flood]
+    dates_verified: true
+    s1_checked: true
+    s2_checked: false
